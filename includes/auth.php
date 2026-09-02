@@ -1,14 +1,9 @@
 <?php
 
+require_once __DIR__ . '/../config/url.php';
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
-}
-
-function app_url(string $path = ''): string
-{
-    $baseUrl = defined('BASE_URL') ? BASE_URL : '/student-task-manager';
-
-    return rtrim($baseUrl, '/') . '/' . ltrim($path, '/');
 }
 
 function is_logged_in(): bool

@@ -2,9 +2,7 @@
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-if (!defined('BASE_URL')) {
-    define('BASE_URL', '/student-task-manager');
-}
+require_once __DIR__ . '/url.php';
 
 function environment_value(string $name, string $default): string
 {

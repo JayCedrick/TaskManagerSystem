@@ -30,6 +30,23 @@ It uses Vanilla PHP, MySQL, HTML5, CSS3, and JavaScript.
 
 5. Open `http://localhost/student-task-manager/` in a browser.
 
+The application automatically detects whether it is running from the web root
+or from a subfolder, so the same code works when the repository itself is the
+document root after cloning. If a hosting setup uses a custom path, set
+`BASE_URL` to that path, such as `/my-task-manager`.
+
+### Running the cloned repository directly
+
+From the cloned repository's root:
+
+```bash
+cd TaskManagerSystem
+php -S 127.0.0.1:8080 -t .
+```
+
+Then open `http://127.0.0.1:8080/`. Import `database.sql` first and make sure
+the local MySQL service is running.
+
 For a local PHP-only check from the workspace root, run `php -S` with the
 workspace root as the document root and open the same application path:
 
@@ -44,6 +61,7 @@ Then open `http://127.0.0.1:8080/student-task-manager/`.
 ```text
 student-task-manager/
 ├── config/database.php
+├── config/url.php
 ├── includes/auth.php
 ├── includes/footer.php
 ├── includes/header.php
@@ -78,6 +96,7 @@ Run the deterministic checks from the workspace root:
 ```bash
 php student-task-manager/tests/validation_test.php
 php student-task-manager/tests/auth_test.php
+php student-task-manager/tests/base_url_test.php
 php student-task-manager/tests/ownership_source_test.php
 php student-task-manager/tests/assets_test.php
 find student-task-manager -name '*.php' -print0 | xargs -0 -n1 php -l
